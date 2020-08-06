@@ -22,3 +22,10 @@ fs.readdir('.', 'utf8', (error, arrFiles)=>{
     }
 })
 
+fs.stat('config.json', (error, result)=>{
+    if(error){
+        console.error(error);
+    }else{
+    console.log(result);
+    }
+})
