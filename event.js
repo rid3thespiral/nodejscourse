@@ -1,7 +1,6 @@
 const EventEmitter = require('events');
 const evt = new EventEmitter();
 
-
 //listen a new event called newData
 evt.on('newData', data => {
     console.log('onEvent detected');
