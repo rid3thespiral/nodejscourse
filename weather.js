@@ -1,9 +1,9 @@
 const API_KEY = '4d09dbc190bafd4cbb89d3135ca6a2f8';
 const WEATHERURL = 'https://api.openweathermap.org/data/2.5/weather?appid='+API_KEY+'&units=metric&q=';
 const https = require('https');
-
+const city = process.argv[2] || '';
 try{
-const req = https.get(WEATHERURL+'TORINO,IT', resp => {
+const req = https.get(WEATHERURL+city, resp => {
     let response = '';
     resp.on('data', chunck => {
         response += chunck;
