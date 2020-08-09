@@ -23,9 +23,18 @@ function addTodo({todo,completed,list}){
     return newtodo;
 }
 
+function updateTodo(id, newTodo){
+    const oldTodo = getTodoById(id);
+    if(oldTodo){
+        data.todos[id] = {...oldTodo, ...newTodo};
+        return data.todos[id];
+    }
+}
+
 module.exports = {
     getTodos,
     getTodoById,
     deleteTodo,
-    addTodo
+    addTodo,
+    updateTodo
 }

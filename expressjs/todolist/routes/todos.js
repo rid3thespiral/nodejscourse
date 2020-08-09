@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getTodoById, getTodos, deleteTodo, addTodo} = require('../controllers/todosControllers');
+const {getTodoById, updateTodo, getTodos, deleteTodo, addTodo} = require('../controllers/todosControllers');
 
 const logger = (req,res,next) => {
     if(req.params.id>100){
@@ -26,6 +26,13 @@ router.get('/', (req,res)=>{
 router.post('/', (req,res)=>{
     console.log(req.body);
     res.json(addTodo(req.body));
+});
+
+router.patch('/:id([0-9]+)', (req,res)=>{
+    console.log(req.body, req.params.id);
+    const uptodo = updateTodo(req.params.id,req.body);
+    res.status(uptodo ? 200: 404).json(uptodo ? uptodo : 'record not found');
+    res.json(updateTodo(req.params.id, req.body));
 });
 
 module.exports = router;
